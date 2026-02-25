@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosas Hermosas - Tienda Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS INCRUSTADO -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rosa-primaria: #E91E63;
+            --rosa-secundaria: #FF69B4;
+            --rosa-claro: #FFB6D9;
+            --blanco: #ffffff;
+            --gris-oscuro: #333333;
+            --gris-claro: #f5f5f5;
+            --sombra: 0 4px 6px rgba(233, 30, 99, 0.2);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--gris-oscuro);
+            background-color: var(--gris-claro);
+        }
+
+        /* ENCABEZADO */
+        .header {
+            background: linear-gradient(135deg, var(--rosa-primaria), var(--rosa-secundaria));
+            color: var(--blanco);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--sombra);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header .logo {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .header .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header .tagline {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        /* NAVEGACIÓN */
+        .navbar {
+            background-color: var(--rosa-primaria);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--sombra);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 12px 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: var(--rosa-claro);
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.9), rgba(255, 105, 180, 0.9)), 
+                        url('https://via.placeholder.com/1200x400?text=Rosas+Frescas');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            padding: 60px 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .hero.visible {
+            display: block;
+        }
+
+        .hero-content h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--blanco);
+            color: var(--rosa-primaria);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* SECCIÓN PRODUCTOS */
+        .productos {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+            display: none;
+        }
+
+        .productos.visible {
+            display: block;
+        }
+
+        /* SECCIÓN GALERÍA INDIVIDUAL */
+        .galeria {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+            display: none;
+        }
+
+        .galeria.visible {
+            display: block;
+        }
+
+        /* SECCIÓN POLÍTICA */
+        .politica {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+            display: none;
+        }
+
+        .politica.visible {
+            display: block;
+        }
+
+        .politica-content {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+        }
+
+        .politica-content h3 {
+            color: var(--rosa-primaria);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--rosa-claro);
+            padding-bottom: 8px;
+        }
+
+        .politica-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .politica-content p {
+            margin-bottom: 12px;
+            color: #666;
+            text-align: justify;
+            font-size: 0.95em;
+        }
+
+        .politica-content ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .politica-content li {
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--rosa-primaria);
+            margin-bottom: 35px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rosa-primaria), var(--rosa-secundaria));
+            border-radius: 2px;
+        }
+
+        .productos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        /* CONTENEDOR GALERÍA INDIVIDUAL - DISEÑO NUEVO */
+        .galeria-individual-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .galeria-item-completo {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            transition: all 0.3s ease;
+        }
+
+        .galeria-item-completo:hover {
+            box-shadow: 0 12px 35px rgba(233, 30, 99, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .galeria-item-imagen {
+            width: 100%;
+            height: 310px;
+            overflow: hidden;
+            background-color: var(--gris-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .galeria-item-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .galeria-item-completo:hover .galeria-item-imagen img {
+            transform: scale(1.05);
+        }
+
+        .galeria-item-detalles {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .galeria-item-info h3 {
+            color: var(--rosa-primaria);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .galeria-item-info p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .galeria-item-precio-section {
+            margin-bottom: 15px;
+        }
+
+        .galeria-item-precio-label {
+            color: #999;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .galeria-item-precio {
+            font-size: 1.8em;
+            color: var(--rosa-secundaria);
+            font-weight: bold;
+        }
+
+        .galeria-cantidad-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            background-color: var(--gris-claro);
+            padding: 10px;
+            border-radius: 8px;
+            width: fit-content;
+        }
+
+        .galeria-cantidad-selector label {
+            font-weight: bold;
+            color: var(--gris-oscuro);
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+
+        .galeria-cantidad-selector input {
+            width: 60px;
+            padding: 6px;
+            border: 2px solid var(--rosa-primaria);
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .galeria-btn-comprar {
+            background: linear-gradient(135deg, var(--rosa-primaria), var(--rosa-secundaria));
+            color: var(--blanco);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .galeria-btn-comprar:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.35);
+        }
+
+        .galeria-btn-comprar i {
+            font-size: 1em;
+        }
+
+        /* TARJETA DE PRODUCTO CATÁLOGO */
+        .producto-card {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(233, 30, 99, 0.25);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background-color: var(--gris-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .producto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .producto-card:hover .producto-imagen img {
+            transform: scale(1.1);
+        }
+
+        .producto-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .producto-info h3 {
+            color: var(--rosa-primaria);
+            font-size: 1.15em;
+            margin-bottom: 8px;
+        }
+
+        .producto-info .descripcion {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .producto-info .precio {
+            font-size: 1.4em;
+            color: var(--rosa-secundaria);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .agregar-carrito {
+            background: linear-gradient(135deg, var(--rosa-primaria), var(--rosa-secundaria));
+            color: var(--blanco);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .agregar-carrito:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
+        }
+
+        /* DETALLE PRODUCTO */
+        .detalle-producto {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: none;
+        }
+
+        .detalle-producto.visible {
+            display: block;
+        }
+
+        .detalle-header {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            flex-wrap: wrap;
+            background-color: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .detalle-imagen {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .detalle-imagen img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .detalle-info {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .detalle-info h2 {
+            font-size: 1.7em;
+            color: var(--rosa-primaria);
+            margin-bottom: 12px;
+        }
+
+        .detalle-info .descripcion-larga {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* OPCIONES DE PRODUCTOS */
+        .opciones-container {
+            margin-top: 25px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .opciones-titulo {
+            font-size: 1.3em;
+            color: var(--rosa-primaria);
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .opciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .opcion-producto {
+            background-color: var(--blanco);
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .opcion-producto:hover {
+            border-color: var(--rosa-primaria);
+            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .opcion-producto.seleccionado {
+            border-color: var(--rosa-primaria);
+            background-color: rgba(233, 30, 99, 0.04);
+            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.25);
+        }
+
+        .opcion-producto h4 {
+            font-size: 1.1em;
+            color: var(--gris-oscuro);
+            margin-bottom: 8px;
+        }
+
+        .opcion-producto p {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            min-height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .opcion-precio {
+            font-size: 1.5em;
+            color: var(--rosa-secundaria);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .cantidad-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .cantidad-selector label {
+            font-weight: bold;
+            color: var(--gris-oscuro);
+            font-size: 0.95em;
+        }
+
+        .cantidad-selector input {
+            width: 70px;
+            padding: 8px;
+            border: 2px solid var(--rosa-primaria);
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .botones-detalle {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-comprar {
+            flex: 1;
+            min-width: 140px;
+            background: linear-gradient(135deg, var(--rosa-primaria), var(--rosa-secundaria));
+            color: var(--blanco);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.35);
+        }
+
+        .btn-comprar:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .btn-volver {
+            flex: 1;
+            min-width: 140px;
+            background-color: #999;
+            color: var(--blanco);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: #777;
+            transform: scale(1.03);
+        }
+
+        .mensaje-seleccion {
+            text-align: center;
+            color: var(--rosa-primaria);
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        /* CONTENEDOR REDES SOCIALES */
+        .redes-sociales {
+            background: linear-gradient(135deg, var(--gris-claro), var(--rosa-claro));
+            padding: 45px 20px;
+            text-align: center;
+            margin-top: 45px;
+            display: none;
+        }
+
+        .redes-sociales.visible {
+            display: block;
+        }
+
+        .subtitulo-redes {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .redes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* TARJETA RED SOCIAL */
+        .red-social {
+            background-color: var(--blanco);
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--gris-oscuro);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            border: 3px solid transparent;
+        }
+
+        .red-social i {
+            font-size: 2em;
+            transition: all 0.3s ease;
+        }
+
+        .red-social span {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .red-social:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.25);
+        }
+
+        /* COLORES ESPECÍFICOS */
+        .red-social.facebook {
+            border-color: #3b5998;
+        }
+
+        .red-social.facebook:hover {
+            background-color: #3b5998;
+            color: var(--blanco);
+        }
+
+        .red-social.facebook i {
+            color: #3b5998;
+        }
+
+        .red-social.facebook:hover i {
+            color: var(--blanco);
+        }
+
+        .red-social.instagram {
+            border-color: #E4405F;
+        }
+
+        .red-social.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: var(--blanco);
+        }
+
+        .red-social.instagram i {
+            color: #E4405F;
+        }
+
+        .red-social.instagram:hover i {
+            color: var(--blanco);
+        }
+
+        .red-social.twitter {
+            border-color: #1DA1F2;
+        }
+
+        .red-social.twitter:hover {
+            background-color: #1DA1F2;
+            color: var(--blanco);
+        }
+
+        .red-social.twitter i {
+            color: #1DA1F2;
+        }
+
+        .red-social.twitter:hover i {
+            color: var(--blanco);
+        }
+
+        .red-social.whatsapp {
+            border-color: #25D366;
+        }
+
+        .red-social.whatsapp:hover {
+            background-color: #25D366;
+            color: var(--blanco);
+        }
+
+        .red-social.whatsapp i {
+            color: #25D366;
+        }
+
+        .red-social.whatsapp:hover i {
+            color: var(--blanco);
+        }
+
+        .red-social.tiktok {
+            border-color: #000000;
+        }
+
+        .red-social.tiktok:hover {
+            background-color: #000000;
+            color: var(--blanco);
+        }
+
+        .red-social.tiktok i {
+            color: #000000;
+        }
+
+        .red-social.tiktok:hover i {
+            color: var(--blanco);
+        }
+
+        .red-social.email {
+            border-color: var(--rosa-primaria);
+        }
+
+        .red-social.email:hover {
+            background-color: var(--rosa-primaria);
+            color: var(--blanco);
+        }
+
+        .red-social.email i {
+            color: var(--rosa-primaria);
+        }
+
+        .red-social.email:hover i {
+            color: var(--blanco);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--gris-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 45px;
+        }
+
+        .footer-container p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .header .logo {
+                font-size: 1.6em;
+                margin-bottom: 6px;
+            }
+
+            .header .tagline {
+                font-size: 0.9em;
+            }
+
+            .nav-menu {
+                gap: 12px;
+                padding: 10px 10px;
+            }
+
+            .nav-menu a {
+                font-size: 0.85em;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6em;
+                margin-bottom: 12px;
+            }
+
+            .hero-content p {
+                font-size: 0.95em;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+                margin-bottom: 25px;
+            }
+
+            .productos-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .redes-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .producto-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .detalle-header {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .detalle-info h2 {
+                font-size: 1.4em;
+            }
+
+            .opciones-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .politica-content {
+                padding: 15px;
+            }
+
+            .galeria-item-completo {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria-item-imagen {
+                height: 180px;
+            }
+
+            .galeria-item-detalles {
+                padding: 15px;
+            }
+
+            .galeria-item-info h3 {
+                font-size: 1.15em;
+            }
+
+            .galeria-item-info p {
+                font-size: 0.8em;
+            }
+
+            .producto-imagen {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header .logo {
+                font-size: 1.4em;
+                margin-bottom: 5px;
+            }
+
+            .nav-menu {
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 0.8em;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.4em;
+            }
+
+            .hero-content p {
+                font-size: 0.85em;
+            }
+
+            .section-title {
+                font-size: 1.3em;
+                margin-bottom: 20px;
+            }
+
+            .section-title::after {
+                width: 60px;
+                height: 2px;
+            }
+
+            .redes-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .red-social {
+                padding: 15px;
+            }
+
+            .red-social i {
+                font-size: 1.6em;
+            }
+
+            .botones-detalle {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-comprar, .btn-volver {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .politica-content {
+                padding: 12px;
+            }
+
+            .politica-content h3 {
+                font-size: 1.05em;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            .galeria-item-imagen {
+                height: 120px;
+            }
+
+            .galeria-item-detalles {
+                padding: 12px;
+            }
+
+            .galeria-item-info h3 {
+                font-size: 1.05em;
+                margin-bottom: 8px;
+            }
+
+            .galeria-item-info p {
+                font-size: 0.75em;
+                line-height: 1.4;
+            }
+
+            .galeria-item-precio {
+                font-size: 1.5em;
+            }
+
+            .galeria-cantidad-selector {
+                padding: 8px;
+                gap: 8px;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .galeria-cantidad-selector label {
+                font-size: 0.8em;
+            }
+
+            .galeria-cantidad-selector input {
+                width: 100%;
+            }
+
+            .galeria-btn-comprar {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+
+            .producto-imagen {
+                height: 120px;
+            }
+
+            .producto-info {
+                padding: 12px;
+            }
+
+            .producto-info h3 {
+                font-size: 1em;
+            }
+
+            .producto-info .descripcion {
+                font-size: 0.8em;
+            }
+
+            .producto-info .precio {
+                font-size: 1.2em;
+            }
+
+            .agregar-carrito {
+                padding: 8px 12px;
+                font-size: 0.85em;
+            }
+
+            .detalle-header {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .detalle-info h2 {
+                font-size: 1.3em;
+            }
+
+            .detalle-info .descripcion-larga {
+                font-size: 0.85em;
+            }
+
+            .opciones-titulo {
+                font-size: 1.1em;
+            }
+
+            .opcion-producto {
+                padding: 12px;
+            }
+
+            .opcion-producto h4 {
+                font-size: 0.95em;
+            }
+
+            .opcion-producto p {
+                font-size: 0.8em;
+                min-height: 30px;
+            }
+
+            .opcion-precio {
+                font-size: 1.3em;
+            }
+
+            .footer {
+                padding: 20px;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo" onclick="volverAlInicio()">🌹YOSSI🌹</h1>
+            <p class="tagline">detalles</p>
+        </div>
+    </header>
+
+    <!-- Navegación MEJORADA -->
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a onclick="volverAlInicio()">Inicio</a></li>
+            <li><a onclick="mostrarProductos()">Productos</a></li>
+            <li><a onclick="mostrarGaleria()">Galería</a></li>
+            <li><a onclick="mostrarPolitica()">Política</a></li>
+            <li><a onclick="mostrarContacto()">Nuestras redes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Principal -->
+    <section id="inicio" class="hero visible">
+        <div class="hero-content">
+            <h2>Bienvenidos a Yossi Detalles</h2>
+            <p>Encuentra los mejores detalles para tu personita especial</p>
+            <button class="cta-button" onclick="mostrarProductos()">Ver Productos</button>
+        </div>
+    </section>
+
+    <!-- Contenedor de Productos -->
+    <section id="productos" class="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="productos-container" id="productosContainer">
+            <!-- Los productos se cargarán aquí con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contenedor de Galería INDIVIDUAL -->
+    <section id="galeria" class="galeria">
+        <h2 class="section-title">Galería de Inspiración</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 0.95em;">
+            Descubre nuestras creaciones más hermosas. Cada detalle es único y personalizado
+        </p>
+        <div class="galeria-individual-container" id="galeriaContainer">
+            <!-- Los items de galería se cargarán aquí con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contenedor de Política -->
+    <section id="politica" class="politica">
+        <h2 class="section-title">Política de la Empresa</h2>
+        <div class="politica-content">
+            <h3>📋 Acerca de Yossi Detalles</h3>
+            <p>
+                Somos un pequeño emprendimiento dedicada a crear detalles especiales y únicos que permiten expresar los sentimientos más hermosos hacia las personas que amamos, con pasión y dedicación elaboramos cada producto para que sea perfecto en su ocasión.
+            </p>
+
+            <h3>💳 Condiciones de Compra</h3>
+            <p>Para confirmar cualquier pedido se requiere:</p>
+            <ul>
+                <li><strong>Adelanto del 50%:</strong> Para reservar tu pedido y comenzar la elaboración.</li>
+                <li><strong>100% para envíos:</strong> El monto restante debe ser pagado antes de realizar el envío.</li>
+                <li><strong>Los precios no incluyen envío:</strong> El costo de envío se cotiza según la ubicación.</li>
+            </ul>
+
+            <h3>📦 Métodos de Entrega</h3>
+            <ul>
+                <li><strong>Entrega a domicilio:</strong> En nuestra zona de cobertura (consultar disponibilidad).</li>
+                <li><strong>Retiro en tienda:</strong> Opción gratuita para clientes locales.</li>
+                <li><strong>Envíos a provincias:</strong> Consultanos para cotizar el costo exacto.</li>
+            </ul>
+
+            <h3>💰 Métodos de Pago</h3>
+            <ul>
+                <li>pagos a traves de billeteras digitales (yape)</li>
+                <li>Efectivo (para retiro en tienda)</li>
+            </ul>
+
+            <h3>⏱️ Tiempo de Elaboración</h3>
+            <p>
+                El tiempo de elaboración depende de la complejidad del diseño y la disponibilidad de materiales. Por favor, realizar sus pedidos con aticipación .
+            </p>
+
+            <h3>🎨 Personalizaciones</h3>
+            <p>
+                Ofrecemos la posibilidad de personalizar nuestros productos según tus preferencias. Colores, tamaños, mensajes y diseños especiales pueden ser ajustados. Estos cambios generaran costos y tiempo adicional.
+            </p>
+
+            <h3>❌ Política de Devoluciones</h3>
+            <p>
+                Debido a la naturaleza del producto no aceptamos devoluciones una vez entregado. Una vez agendado el pedido no se realizaran devoluciones del dinero adelantado.
+            </p>
+
+            <h3>🤝 Términos y Condiciones</h3>
+            <p>
+                Al realizar una compra en Yossi Detalles, aceptas nuestros términos y condiciones.
+            </p>
+
+            <h3>📞 Contacto y Soporte</h3>
+            <p>
+                Para consultas, reclamos o sugerencias, comunícate con nosotros a través de nuestras redes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Detalle de Producto -->
+    <section id="detalleProducto" class="detalle-producto">
+        <div class="detalle-header">
+            <div class="detalle-imagen">
+                <img id="detalleImg" src="" alt="Producto">
+            </div>
+            <div class="detalle-info">
+                <h2 id="detalleTitulo"></h2>
+                <p class="descripcion-larga" id="detalleDescripcion"></p>
+            </div>
+        </div>
+
+        <!-- Opciones de productos -->
+        <div class="opciones-container">
+            <h3 class="opciones-titulo">Elige tu opción y desliza hasta el final:</h3>
+            <p class="mensaje-seleccion" id="mensajeSeleccion"></p>
+            <div class="opciones-grid" id="opcionesGrid">
+                <!-- Las opciones se cargarán aquí -->
+            </div>
+
+            <div class="cantidad-selector">
+                <label for="cantidad">Cantidad de arreglos:</label>
+                <input type="number" id="cantidad" min="1" value="1">
+            </div>
+
+            <div class="botones-detalle">
+                <button class="btn-comprar" id="btnComprar" onclick="comprarProducto()" disabled>Comprar Ahora</button>
+                <button class="btn-volver" onclick="volverAlCatalogo()">Volver al Catálogo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor de Redes Sociales -->
+    <section id="contacto" class="redes-sociales">
+        <h2 class="section-title">Síguenos en Redes Sociales</h2>
+        <p class="subtitulo-redes">Mantente conectado con nuestras últimas ofertas y promociones</p>
+        
+        <div class="redes-container">
+            <a href="https://www.instagram.com/detalles.yossi.0?igsh=MWljZnNjdmhia3lucA==" target="_blank" class="red-social instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/+51910782359" target="_blank" class="red-social whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://www.tiktok.com/@detalles.yossi.0?_r=1&_t=ZS-940mUCQXKPV" target="_blank" class="red-social tiktok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+            <a href="https://www.facebook.com/share/1JatoDuj1R/" target="_blank" class="red-social facebook">
+                <i class="fab fa-facebook"></i>
+                <span>facebook</span>
+            </a>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; lobo solitario .</p>
+            <p>Hecho con ❤️ para ti</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INCRUSTADO -->
+    <script>
+        // ===== CONFIGURACIÓN DE WHATSAPP =====
+        const NUMERO_WHATSAPP = '51910782359';
+
+        // ===== CONFIGURACIÓN DE MONEDA =====
+        const SIMBOLO_MONEDA = 'S/';
+
+        // Base de datos de productos con opciones
+        const productos = [
+            {
+                id: 1,
+                nombre: "Rosas eternas",
+                descripcion: "Un arreglo hermoso de rosas perfectas para expresar tu amor y pasión, rosas creadas con los mejores materiales.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/rosas%20eternas.jpeg",
+                opciones: [
+                    { id: 101, nombre: "Ramo de 5 Rosas", cantidad: "5 rosas", precio: "30.00" },
+                    { id: 102, nombre: "Ramo de 7 Rosas", cantidad: "7 rosas", precio: "35.00" },
+                    { id: 103, nombre: "Ramo de 10 Rosas", cantidad: "10 rosas", precio: "49.00" },
+                    { id: 104, nombre: "Ramo de 12 Rosas", cantidad: "12 rosas", precio: "59.00" },
+                    { id: 105, nombre: "Ramo de 15 Rosas", cantidad: "15 rosas", precio: "69.00" },
+                    { id: 106, nombre: "Ramo de 20 Rosas", cantidad: "20 rosas", precio: "89.00" },
+                    { id: 107, nombre: "Ramo de 25 Rosas", cantidad: "25 rosas", precio: "112.00" },
+                    { id: 108, nombre: "Ramo de 30 Rosas", cantidad: "30 rosas", precio: "135.00" },
+                    { id: 109, nombre: "Ramo de 40 Rosas", cantidad: "40 rosas", precio: "180.00" }
+                ]
+            },
+            {
+                id: 2,
+                nombre: "Ramos con peluche",
+                descripcion: "Un elegante arreglo de rosas con peluche perfecto para todas la ocasiones y momentos especiales.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/ramos%20con%20peluche.jpeg",
+                opciones: [
+                    { id: 201, nombre: "Ramo de 5 Rosas mas peluche", cantidad: "5 rosas mas peluche", precio: "68.00" },
+                    { id: 202, nombre: "Ramo de 7 Rosas mas peluche", cantidad: "7 rosas mas peluche", precio: "80.00" },
+                    { id: 203, nombre: "Ramo de 10 Rosas mas peluche", cantidad: "10 rosas mas peluche", precio: "90.00" },
+                    { id: 204, nombre: "Ramo de 12 Rosas mas peluche", cantidad: "12 rosas mas peluche", precio: "100.00" },
+                    { id: 205, nombre: "Ramo de 15 Rosas mas peluche", cantidad: "15 rosas mas peluche", precio: "110.00" },
+                    { id: 206, nombre: "Ramo de 20 Rosas mas peluche", cantidad: "20 rosas mas peluche", precio: "130.00" }
+                ]
+            },
+            {
+                id: 3,
+                nombre: "Ramos con mariposas",
+                descripcion: "Un arreglo romántico con maripoosas del color de tu eleccion, ideal para sorpresas especiales y momentos de amor.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/ramos%20con%20mariposas.jpg.png",
+                opciones: [
+                    { id: 301, nombre: "Ramo de 20 mariposas", cantidad: "20 mariposas", precio: "50.00" },
+                    { id: 302, nombre: "Ramo de 25 mariposas", cantidad: "25 mariposas", precio: "60.00" },
+                    { id: 303, nombre: "Ramo de 30 mariposas", cantidad: "30 mariposas", precio: "75.00" },
+                    { id: 304, nombre: "Ramo de 40 mariposas", cantidad: "40 mariposas", precio: "99.00" }
+                ]
+            }
+        ];
+
+        // Base de datos de GALERÍA - INDIVIDUAL SIN OPCIONES
+        const galeria = [
+            {
+                id: 1,
+                nombre: "cajas de personajes",
+                descripcion: "Un hermoso regalo que te incluye la caja, el contenido y un peluche",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/cajas%20personajes.jpeg",
+                precio: "consulta"
+            },
+            {
+                id: 2,
+                nombre: "cuadros personalizados en 3D",
+                descripcion: "un hermoso regalo que te incluye la caja, san valentin, 2 fotos, 2 dedicatorias, 4 chocolates BOM O BOM.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/CUADROS%20PERSONALIZADAS.jpeg",
+                precio: "55.00"
+            },
+            {
+                id: 3,
+                nombre: "cuadros personalizados",
+                descripcion: "Creación única para ti.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/cuadro2.jpeg",
+                precio: "50.00"
+            },
+             {
+                id: 4,
+                nombre: "Flores con limpiapipa",
+                descripcion: "hermosas flores individuales o ramos hechos con limpiapipa.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/flores%20con%20limpiapipa.jpeg",
+                precio: "consulta"
+            },
+             {
+                id: 5,
+                nombre: "Dulcero para hombre",
+                descripcion: "Un increible dulcero para esa persona que las hace feliz.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/dulcero%20para%20hombre.jpeg",
+                precio: "50.00"
+            },
+             {
+                id: 6,
+                nombre: "Dulcero para mujer",
+                descripcion: "Un increible dulcero para la niña que te hace suspirar.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/dulcero%20para%20mujeres.jpeg",
+                precio: "40.00"
+            },
+              {
+                id: 7,
+                nombre: "Dulcero con globito",
+                descripcion: "Que cada dulce te recuerde lo especial que eres hoy y siempre",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/dulcero.png",
+                precio: "22.00"
+            },
+            {
+                id: 8,
+                nombre: "Box de oso lotso",
+                descripcion: "Suave como Lotso, con aroma a fresa y un abrazo que deja huella",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/box%20de%20oso%20lotoso.png",
+                precio: "50.00"
+            },
+             {
+                id: 9,
+                nombre: "flores individuales",
+                descripcion: "Si tuvo un mal dia comprale una flor.",
+                imagen: "https://github.com/wenkh86/yossidetalles/raw/main/flores%20individuales.png",
+                precio: "10.00 cada una"
+            },
+        
+        ];
+
+        let productoActual = null;
+        let opcionSeleccionada = null;
+
+        // Función para cargar productos en el catálogo
+        function cargarProductos() {
+            const container = document.getElementById('productosContainer');
+            container.innerHTML = '';
+
+            productos.forEach(producto => {
+                const precioMinimo = Math.min(...producto.opciones.map(o => parseFloat(o.precio)));
+                const card = document.createElement('div');
+                card.className = 'producto-card';
+                card.innerHTML = `
+                    <div class="producto-imagen">
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                    </div>
+                    <div class="producto-info">
+                        <h3>${producto.nombre}</h3>
+                        <p class="descripcion">Desde el ramo más pequeño hasta arreglos premium</p>
+                        <p class="precio">Desde ${SIMBOLO_MONEDA}${precioMinimo.toFixed(2)}</p>
+                        <button class="agregar-carrito" onclick="abrirDetalle(${producto.id})">Ver Opciones</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Función para cargar galería INDIVIDUAL
+        function cargarGaleria() {
+            const container = document.getElementById('galeriaContainer');
+            container.innerHTML = '';
+
+            galeria.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'galeria-item-completo';
+                itemDiv.innerHTML = `
+                    <div class="galeria-item-imagen">
+                        <img src="${item.imagen}" alt="${item.nombre}">
+                    </div>
+                    <div class="galeria-item-detalles">
+                        <div class="galeria-item-info">
+                            <h3>${item.nombre}</h3>
+                            <p>${item.descripcion}</p>
+                        </div>
+                        
+                        <div class="galeria-item-precio-section">
+                            <div class="galeria-item-precio-label">Precio</div>
+                            <div class="galeria-item-precio">${SIMBOLO_MONEDA}${item.precio}</div>
+                        </div>
+
+                        <div class="galeria-cantidad-selector">
+                            <label for="cantidad-${item.id}">Cantidad:</label>
+                            <input type="number" id="cantidad-${item.id}" class="galeria-input-cantidad" min="1" value="1">
+                        </div>
+
+                        <button class="galeria-btn-comprar" onclick="comprarDesdeGaleria(${item.id}, '${item.nombre}', '${item.precio}')">
+                            <i class="fab fa-whatsapp"></i> Comprar por WhatsApp
+                        </button>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // Función para comprar DIRECTAMENTE desde galería
+        function comprarDesdeGaleria(galeriaId, nombre, precio) {
+            const cantidadInput = document.getElementById(`cantidad-${galeriaId}`);
+            const cantidad = cantidadInput.value;
+            const total = (parseFloat(precio) * cantidad).toFixed(2);
+            
+            // Mensaje para WhatsApp desde galería
+            const mensaje = `¡Hola! Me interesa este producto de tu galería:%0A%0A` +
+                `📷 *Producto:* ${nombre}%0A` +
+                `💰 *Precio unitario:* ${SIMBOLO_MONEDA}${precio}%0A` +
+                `📍 *Cantidad:* ${cantidad}%0A` +
+                `💵 *Total:* ${SIMBOLO_MONEDA}${total}%0A%0A` +
+                `¿Cuál es el medio de pago y disponibilidad de entrega?%0A`;
+            
+            const urlWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${mensaje}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Función para abrir detalle del producto (CATÁLOGO)
+        function abrirDetalle(id) {
+            productoActual = productos.find(p => p.id === id);
+            opcionSeleccionada = null;
+            
+            if (productoActual) {
+                document.getElementById('detalleTitulo').textContent = productoActual.nombre;
+                document.getElementById('detalleDescripcion').textContent = productoActual.descripcion;
+                document.getElementById('detalleImg').src = productoActual.imagen;
+                document.getElementById('cantidad').value = 1;
+                document.getElementById('mensajeSeleccion').textContent = 'Selecciona una opción para continuar';
+                document.getElementById('btnComprar').disabled = true;
+
+                // Cargar opciones
+                const opcionesGrid = document.getElementById('opcionesGrid');
+                opcionesGrid.innerHTML = '';
+                
+                productoActual.opciones.forEach(opcion => {
+                    const opcionDiv = document.createElement('div');
+                    opcionDiv.className = 'opcion-producto';
+                    opcionDiv.innerHTML = `
+                        <h4>${opcion.nombre}</h4>
+                        <p>${opcion.cantidad}</p>
+                        <div class="opcion-precio">${SIMBOLO_MONEDA}${opcion.precio}</div>
+                        <button onclick="seleccionarOpcion(${productoActual.id}, ${opcion.id})">Seleccionar</button>
+                    `;
+                    opcionesGrid.appendChild(opcionDiv);
+                });
+
+                // Ocultar otras secciones
+                document.getElementById('inicio').classList.remove('visible');
+                document.getElementById('productos').classList.remove('visible');
+                document.getElementById('galeria').classList.remove('visible');
+                document.getElementById('politica').classList.remove('visible');
+                document.getElementById('contacto').classList.remove('visible');
+                document.getElementById('detalleProducto').classList.add('visible');
+
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Función para seleccionar una opción
+        function seleccionarOpcion(productoId, opcionId) {
+            opcionSeleccionada = productoActual.opciones.find(o => o.id === opcionId);
+            
+            document.querySelectorAll('.opcion-producto').forEach(el => {
+                el.classList.remove('seleccionado');
+            });
+            event.target.parentElement.classList.add('seleccionado');
+            
+            document.getElementById('btnComprar').disabled = false;
+            document.getElementById('mensajeSeleccion').textContent = `✓ Opción seleccionada: ${opcionSeleccionada.nombre}`;
+        }
+
+        // Función para volver al catálogo
+        function volverAlCatalogo() {
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('productos').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para comprar desde CATÁLOGO (con opciones)
+        function comprarProducto() {
+            if (!opcionSeleccionada) {
+                showNotification('Por favor selecciona una opción');
+                return;
+            }
+
+            const cantidad = document.getElementById('cantidad').value;
+            const total = (parseFloat(opcionSeleccionada.precio) * cantidad).toFixed(2);
+            
+            const mensaje = `¡Hola! Quiero hacer un pedido:%0A%0A` +
+                `📦 *Producto:* ${productoActual.nombre}%0A` +
+                `🌹 *Opción:* ${opcionSeleccionada.nombre}%0A` +
+                `📍 *Cantidad de arreglos:* ${cantidad}%0A` +
+                `💰 *Precio unitario:* ${SIMBOLO_MONEDA}${opcionSeleccionada.precio}%0A` +
+                `💵 *Total:* ${SIMBOLO_MONEDA}${total}%0A%0A` +
+                `¿Cuál es el medio de pago y disponibilidad de entrega?%0A`;
+            
+            const urlWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${mensaje}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Función para mostrar productos
+        function mostrarProductos() {
+            document.getElementById('inicio').classList.remove('visible');
+            document.getElementById('galeria').classList.remove('visible');
+            document.getElementById('politica').classList.remove('visible');
+            document.getElementById('contacto').classList.remove('visible');
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('productos').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para mostrar galería
+        function mostrarGaleria() {
+            document.getElementById('inicio').classList.remove('visible');
+            document.getElementById('productos').classList.remove('visible');
+            document.getElementById('politica').classList.remove('visible');
+            document.getElementById('contacto').classList.remove('visible');
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('galeria').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para mostrar política
+        function mostrarPolitica() {
+            document.getElementById('inicio').classList.remove('visible');
+            document.getElementById('productos').classList.remove('visible');
+            document.getElementById('galeria').classList.remove('visible');
+            document.getElementById('contacto').classList.remove('visible');
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('politica').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para mostrar contacto
+        function mostrarContacto() {
+            document.getElementById('inicio').classList.remove('visible');
+            document.getElementById('productos').classList.remove('visible');
+            document.getElementById('galeria').classList.remove('visible');
+            document.getElementById('politica').classList.remove('visible');
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('contacto').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para volver al inicio
+        function volverAlInicio() {
+            document.getElementById('productos').classList.remove('visible');
+            document.getElementById('galeria').classList.remove('visible');
+            document.getElementById('politica').classList.remove('visible');
+            document.getElementById('contacto').classList.remove('visible');
+            document.getElementById('detalleProducto').classList.remove('visible');
+            document.getElementById('inicio').classList.add('visible');
+            window.scrollTo(0, 0);
+        }
+
+        // Función para mostrar notificaciones
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-in-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Cargar productos y galería cuando se carga la página
+       window.addEventListener('load', function() {
+            cargarProductos();
+            cargarGaleria();
+        });
+
+        console.log('✨ Página de Rosas Hermosas cargada correctamente');
+        console.log('📱 WhatsApp integrado - Número configurado: ' + NUMERO_WHATSAPP);
+        console.log('💵 Moneda configurada: ' + SIMBOLO_MONEDA);
+        console.log('📷 Galería individual agregada');
+    </script>
+</body>
+</html>
